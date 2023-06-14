@@ -1,0 +1,12 @@
+[gd_resource type="LabelSettings" load_steps=3 format=3 uid="uid://cxo0yepcdyqkr"]
+
+[ext_resource type="FontFile" uid="uid://b5giqp34u5y46" path="res://fonts/Maven_Pro/MavenPro.ttf" id="1_27s2p"]
+
+[sub_resource type="FontVariation" id="FontVariation_vf436"]
+base_font = ExtResource("1_27s2p")
+
+[resource]
+line_spacing = 0.0
+font = SubResource("FontVariation_vf436")
+font_size = 20
+font_color = Color(0.870588, 0.870588, 0.870588, 1)

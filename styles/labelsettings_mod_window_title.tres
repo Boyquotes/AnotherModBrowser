@@ -1,0 +1,15 @@
+[gd_resource type="LabelSettings" load_steps=3 format=3 uid="uid://d2hsvs7x15yfh"]
+
+[ext_resource type="FontFile" uid="uid://b5giqp34u5y46" path="res://fonts/Maven_Pro/MavenPro.ttf" id="1_7scuh"]
+
+[sub_resource type="FontVariation" id="FontVariation_x1846"]
+base_font = ExtResource("1_7scuh")
+variation_opentype = {
+2003265652: 700
+}
+
+[resource]
+line_spacing = 0.0
+font = SubResource("FontVariation_x1846")
+font_size = 20
+shadow_color = Color(0, 0, 0, 0.392157)

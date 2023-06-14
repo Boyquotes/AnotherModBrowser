@@ -1,0 +1,8 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://duv5bimu5kr10"]
+
+[ext_resource type="FontVariation" uid="uid://cpny1p07mqog8" path="res://fonts/Maven_Pro/variation_title.tres" id="1_2ecjb"]
+
+[resource]
+line_spacing = 0.0
+font = ExtResource("1_2ecjb")
+font_size = 48

@@ -1,0 +1,744 @@
+[gd_scene load_steps=46 format=3 uid="uid://d0lmeyctam53s"]
+
+[ext_resource type="Script" path="res://mods/mods.gd" id="1_1fgod"]
+[ext_resource type="Script" path="res://misc/fade.gd" id="2_pg4c3"]
+[ext_resource type="Script" path="res://window_manager.gd" id="6_f85m6"]
+[ext_resource type="Script" path="res://misc/tap/tap.gd" id="7_ci0d6"]
+[ext_resource type="Script" path="res://toggle_window.gd" id="7_cvnx0"]
+[ext_resource type="LabelSettings" uid="uid://duv5bimu5kr10" path="res://styles/labelsettings_window_title.tres" id="7_v1lik"]
+[ext_resource type="FontVariation" uid="uid://bi7853aa5abvd" path="res://fonts/Maven_Pro/variation_regular.tres" id="8_ff61e"]
+[ext_resource type="StyleBox" uid="uid://dvqj0x3s7o0oa" path="res://styles/button_colored.tres" id="8_knrsy"]
+[ext_resource type="Script" path="res://classes/search_component.gd" id="9_t0d31"]
+[ext_resource type="Script" path="res://mods/mod_table.gd" id="10_gbqmf"]
+[ext_resource type="Texture2D" uid="uid://btvrbrktuour6" path="res://icons/refresh.svg" id="10_xp8db"]
+[ext_resource type="FontVariation" uid="uid://crfqg06v0pxm" path="res://fonts/Maven_Pro/variation_desc.tres" id="12_s5d1b"]
+[ext_resource type="Texture2D" uid="uid://c8vw705j8ype3" path="res://icons/trash-x-filled.svg" id="13_l4wko"]
+[ext_resource type="Script" path="res://misc/focus_releaser.gd" id="15_8tqjj"]
+[ext_resource type="StyleBox" uid="uid://c5lj5w8o235j8" path="res://styles/lineedit_search_normal.tres" id="15_icvib"]
+[ext_resource type="Script" path="res://modrinth/search.gd" id="16_i846t"]
+[ext_resource type="StyleBox" uid="uid://sksdk2rr862o" path="res://styles/lineedit_search_focus.tres" id="16_qdfid"]
+[ext_resource type="Script" path="res://mods/mod_table_refresh.gd" id="17_amqci"]
+[ext_resource type="Texture2D" uid="uid://dcutwrbq35jn" path="res://icons/search.svg" id="17_pcaan"]
+[ext_resource type="StyleBox" uid="uid://ha6y77ohal8n" path="res://styles/button_colored_hover.tres" id="18_reoo8"]
+[ext_resource type="StyleBox" uid="uid://dyknjw5l22xp7" path="res://styles/button_colored_pressed.tres" id="19_viye5"]
+[ext_resource type="StyleBox" uid="uid://cspr3xge5adul" path="res://styles/progress_background.tres" id="20_5vihx"]
+[ext_resource type="StyleBox" uid="uid://utv1mvm8x0f2" path="res://styles/progress_fill.tres" id="21_kn6cn"]
+[ext_resource type="Script" path="res://options/option_path.gd" id="22_6301n"]
+[ext_resource type="Script" path="res://classes/fake_progress.gd" id="22_yo64m"]
+[ext_resource type="LabelSettings" uid="uid://cxo0yepcdyqkr" path="res://styles/labelsettings_options_text.tres" id="23_m7qmj"]
+[ext_resource type="StyleBox" uid="uid://di324mmn14uck" path="res://styles/panelcontainer_special.tres" id="26_l3g45"]
+[ext_resource type="StyleBox" uid="uid://1os7x8hrqxeh" path="res://styles/button_margins_empty.tres" id="27_7ljmp"]
+[ext_resource type="Texture2D" uid="uid://dbh40ntisvr6i" path="res://icons/modrinth.svg" id="28_hf66u"]
+[ext_resource type="Texture2D" uid="uid://buh1gpsjyv6qk" path="res://icons/box.svg" id="29_03sf1"]
+[ext_resource type="Texture2D" uid="uid://dfgh4rc8a7oam" path="res://icons/settings.svg" id="30_etuoi"]
+
+[sub_resource type="Gradient" id="Gradient_8n75l"]
+interpolation_mode = 2
+colors = PackedColorArray(0.233025, 9.42641e-05, 0.268791, 1, 0.0189452, 0.0975112, 0.262729, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_t5xof"]
+gradient = SubResource("Gradient_8n75l")
+fill_to = Vector2(1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t7u4m"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_cmc5r"]
+color = Color(0.384314, 0.121569, 0.6, 1)
+grow_begin = 8.0
+grow_end = 128.0
+thickness = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jqt5i"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="Gradient" id="Gradient_k04l8"]
+colors = PackedColorArray(1, 1, 1, 0.176471, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_yogve"]
+gradient = SubResource("Gradient_k04l8")
+width = 128
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pxmsg"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_52fis"]
+line_spacing = 0.0
+font_size = 18
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mi2fa"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ddcdt"]
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ecxcf"]
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_ohwc4"]
+color = Color(0.886275, 0.764706, 1, 0.203922)
+grow_begin = -10.0
+grow_end = -10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uglel"]
+corner_radius_bottom_right = 12
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Mods" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("1_1fgod")
+
+[node name="Background" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Gradient" type="TextureRect" parent="Background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_t5xof")
+
+[node name="Fade" type="ColorRect" parent="Background"]
+visible = false
+z_index = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("2_pg4c3")
+
+[node name="Windows" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("6_f85m6")
+
+[node name="Modrinth" type="Control" parent="Windows"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("7_cvnx0")
+
+[node name="Panel" type="Panel" parent="Windows/Modrinth"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 230.0
+offset_top = 20.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Content" type="VBoxContainer" parent="Windows/Modrinth/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 25.0
+offset_top = 15.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Header" type="HBoxContainer" parent="Windows/Modrinth/Panel/Content"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Windows/Modrinth/Panel/Content/Header"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Modrinth"
+label_settings = ExtResource("7_v1lik")
+vertical_alignment = 2
+
+[node name="Search" type="LineEdit" parent="Windows/Modrinth/Panel/Content/Header" node_paths=PackedStringArray("HTTP")]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = ExtResource("15_icvib")
+theme_override_styles/focus = ExtResource("16_qdfid")
+placeholder_text = "Search"
+expand_to_text_length = true
+context_menu_enabled = false
+select_all_on_focus = true
+caret_blink = true
+caret_blink_interval = 0.6
+script = ExtResource("16_i846t")
+HTTP = NodePath("ModrinthSearchComponent")
+metadata/_edit_group_ = true
+
+[node name="ModrinthSearchComponent" type="HTTPRequest" parent="Windows/Modrinth/Panel/Content/Header/Search"]
+max_redirects = 1
+timeout = 10.0
+script = ExtResource("9_t0d31")
+search_limit = 10
+
+[node name="Icon" type="TextureRect" parent="Windows/Modrinth/Panel/Content/Header/Search"]
+modulate = Color(0.807843, 0.807843, 0.807843, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_right = 24.0
+offset_bottom = -2.0
+grow_vertical = 2
+texture = ExtResource("17_pcaan")
+stretch_mode = 3
+
+[node name="FocusReleaser" type="Control" parent="Windows/Modrinth/Panel/Content/Header/Search"]
+layout_mode = 1
+anchors_preset = 0
+mouse_filter = 2
+script = ExtResource("15_8tqjj")
+
+[node name="RoundedCorners" type="Panel" parent="Windows/Modrinth/Panel/Content/Header/Search"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = -3.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_t7u4m")
+
+[node name="SearchProgress" type="ProgressBar" parent="Windows/Modrinth/Panel/Content/Header/Search/RoundedCorners" node_paths=PackedStringArray("HTTP")]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -6.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/background = ExtResource("20_5vihx")
+theme_override_styles/fill = ExtResource("21_kn6cn")
+max_value = 1.0
+step = 0.0
+show_percentage = false
+script = ExtResource("22_yo64m")
+HTTP = NodePath("../../ModrinthSearchComponent")
+
+[node name="Separator" type="HSeparator" parent="Windows/Modrinth/Panel/Content"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/separator = SubResource("StyleBoxLine_cmc5r")
+
+[node name="Body" type="ScrollContainer" parent="Windows/Modrinth/Panel/Content"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HFlow" type="HFlowContainer" parent="Windows/Modrinth/Panel/Content/Body"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/h_separation = 40
+theme_override_constants/v_separation = 40
+alignment = 1
+
+[node name="Mods" type="Control" parent="Windows"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("7_cvnx0")
+
+[node name="Margin" type="MarginContainer" parent="Windows/Mods"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.15
+anchor_right = 0.85
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="Aspect" type="AspectRatioContainer" parent="Windows/Mods/Margin"]
+layout_mode = 2
+ratio = 1.3
+
+[node name="Panel" type="Panel" parent="Windows/Mods/Margin/Aspect"]
+layout_mode = 2
+
+[node name="Margin" type="MarginContainer" parent="Windows/Mods/Margin/Aspect/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 20
+
+[node name="Content" type="VBoxContainer" parent="Windows/Mods/Margin/Aspect/Panel/Margin"]
+layout_mode = 2
+
+[node name="Header" type="HBoxContainer" parent="Windows/Mods/Margin/Aspect/Panel/Margin/Content"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Windows/Mods/Margin/Aspect/Panel/Margin/Content/Header"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 1
+text = "Mods"
+label_settings = ExtResource("7_v1lik")
+horizontal_alignment = 1
+
+[node name="Refresh" type="Button" parent="Windows/Mods/Margin/Aspect/Panel/Margin/Content/Header"]
+layout_mode = 2
+size_flags_horizontal = 10
+focus_mode = 0
+theme_override_fonts/font = ExtResource("8_ff61e")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = ExtResource("8_knrsy")
+theme_override_styles/hover = ExtResource("18_reoo8")
+theme_override_styles/pressed = ExtResource("19_viye5")
+text = "    Refresh"
+script = ExtResource("17_amqci")
+
+[node name="RefreshIcon" type="TextureRect" parent="Windows/Mods/Margin/Aspect/Panel/Margin/Content/Header/Refresh"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 14.0
+offset_top = -13.0
+offset_right = 38.0
+offset_bottom = 11.0
+grow_vertical = 2
+texture = ExtResource("10_xp8db")
+stretch_mode = 2
+
+[node name="Rounding" type="Panel" parent="Windows/Mods/Margin/Aspect/Panel/Margin/Content/Header/Refresh"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jqt5i")
+
+[node name="Gradient" type="TextureRect" parent="Windows/Mods/Margin/Aspect/Panel/Margin/Content/Header/Refresh/Rounding"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("GradientTexture1D_yogve")
+expand_mode = 1
+
+[node name="Separator" type="HSeparator" parent="Windows/Mods/Margin/Aspect/Panel/Margin/Content"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/separator = SubResource("StyleBoxLine_cmc5r")
+
+[node name="Scroll" type="ScrollContainer" parent="Windows/Mods/Margin/Aspect/Panel/Margin/Content"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ModTable" type="VBoxContainer" parent="Windows/Mods/Margin/Aspect/Panel/Margin/Content/Scroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("10_gbqmf")
+
+[node name="HeaderRow" type="HBoxContainer" parent="Windows/Mods/Margin/Aspect/Panel/Margin/Content/Scroll/ModTable"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Spacer" type="VSeparator" parent="Windows/Mods/Margin/Aspect/Panel/Margin/Content/Scroll/ModTable/HeaderRow"]
+layout_mode = 2
+theme_override_constants/separation = 52
+theme_override_styles/separator = SubResource("StyleBoxEmpty_pxmsg")
+
+[node name="Delete" type="TextureButton" parent="Windows/Mods/Margin/Aspect/Panel/Margin/Content/Scroll/ModTable/HeaderRow"]
+visible = false
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_vertical = 0
+focus_mode = 0
+texture_normal = ExtResource("13_l4wko")
+stretch_mode = 3
+
+[node name="State" type="CheckBox" parent="Windows/Mods/Margin/Aspect/Panel/Margin/Content/Scroll/ModTable/HeaderRow"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 0
+focus_mode = 0
+theme_override_fonts/font = ExtResource("12_s5d1b")
+action_mode = 0
+
+[node name="Name" type="Label" parent="Windows/Mods/Margin/Aspect/Panel/Margin/Content/Scroll/ModTable/HeaderRow"]
+custom_minimum_size = Vector2(200, 24)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("12_s5d1b")
+text = "Name"
+label_settings = SubResource("LabelSettings_52fis")
+
+[node name="Description" type="Label" parent="Windows/Mods/Margin/Aspect/Panel/Margin/Content/Scroll/ModTable/HeaderRow"]
+custom_minimum_size = Vector2(400, 24)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("12_s5d1b")
+text = "Description"
+label_settings = SubResource("LabelSettings_52fis")
+autowrap_mode = 3
+
+[node name="Filename" type="Label" parent="Windows/Mods/Margin/Aspect/Panel/Margin/Content/Scroll/ModTable/HeaderRow"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("12_s5d1b")
+text = "Filename"
+label_settings = SubResource("LabelSettings_52fis")
+
+[node name="Options" type="Control" parent="Windows"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("7_cvnx0")
+
+[node name="Margin" type="MarginContainer" parent="Windows/Options"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.15
+anchor_right = 0.85
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="Aspect" type="AspectRatioContainer" parent="Windows/Options/Margin"]
+layout_mode = 2
+ratio = 1.3
+
+[node name="Panel" type="Panel" parent="Windows/Options/Margin/Aspect"]
+layout_mode = 2
+
+[node name="Margin" type="MarginContainer" parent="Windows/Options/Margin/Aspect/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 20
+
+[node name="Content" type="VBoxContainer" parent="Windows/Options/Margin/Aspect/Panel/Margin"]
+layout_mode = 2
+
+[node name="Header" type="HBoxContainer" parent="Windows/Options/Margin/Aspect/Panel/Margin/Content"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Windows/Options/Margin/Aspect/Panel/Margin/Content/Header"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 1
+text = "Options"
+label_settings = ExtResource("7_v1lik")
+horizontal_alignment = 1
+
+[node name="Separator" type="HSeparator" parent="Windows/Options/Margin/Aspect/Panel/Margin/Content"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/separator = SubResource("StyleBoxLine_cmc5r")
+
+[node name="Content" type="ScrollContainer" parent="Windows/Options/Margin/Aspect/Panel/Margin/Content"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_mi2fa")
+
+[node name="Options" type="VBoxContainer" parent="Windows/Options/Margin/Aspect/Panel/Margin/Content/Content"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Path" type="HBoxContainer" parent="Windows/Options/Margin/Aspect/Panel/Margin/Content/Content/Options"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 15
+script = ExtResource("22_6301n")
+
+[node name="Label" type="Label" parent="Windows/Options/Margin/Aspect/Panel/Margin/Content/Content/Options/Path"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Mod Path"
+label_settings = ExtResource("23_m7qmj")
+
+[node name="LineEdit" type="LineEdit" parent="Windows/Options/Margin/Aspect/Panel/Margin/Content/Content/Options/Path"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.870588, 0.870588, 0.870588, 1)
+theme_override_font_sizes/font_size = 20
+text = "C:\\Users\\Me\\Documents\\MultiMC\\instances\\1.19.3 Quilt\\.minecraft\\mods"
+
+[node name="FocusReleaser" type="Control" parent="Windows/Options/Margin/Aspect/Panel/Margin/Content/Content/Options/Path/LineEdit"]
+anchors_preset = 0
+script = ExtResource("15_8tqjj")
+
+[node name="Edit" type="Button" parent="Windows/Options/Margin/Aspect/Panel/Margin/Content/Content/Options/Path" node_paths=PackedStringArray("tap_parent")]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.870588, 0.870588, 0.870588, 1)
+theme_override_font_sizes/font_size = 20
+text = "Edit"
+script = ExtResource("7_ci0d6")
+tap_parent = NodePath("Rounding")
+
+[node name="Rounding" type="Panel" parent="Windows/Options/Margin/Aspect/Panel/Margin/Content/Content/Options/Path/Edit"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ddcdt")
+
+[node name="FocusReleaser" type="Control" parent="Windows/Options/Margin/Aspect/Panel/Margin/Content/Content/Options/Path/Edit"]
+anchors_preset = 0
+offset_left = -1195.0
+offset_top = -146.308
+offset_right = -1155.0
+offset_bottom = -106.308
+script = ExtResource("15_8tqjj")
+
+[node name="FileDialog" type="FileDialog" parent="Windows/Options/Margin/Aspect/Panel/Margin/Content/Content/Options/Path"]
+disable_3d = true
+positional_shadow_atlas_size = 0
+positional_shadow_atlas_quad_0 = 0
+positional_shadow_atlas_quad_1 = 0
+positional_shadow_atlas_quad_2 = 0
+positional_shadow_atlas_quad_3 = 0
+initial_position = 4
+title = "Open Mod Directory"
+size = Vector2i(700, 400)
+ok_button_text = "Select Current Folder"
+mode_overrides_title = false
+file_mode = 2
+access = 2
+
+[node name="Buttons" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+offset_top = 20.0
+offset_right = 200.0
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("26_l3g45")
+
+[node name="VBox" type="VBoxContainer" parent="Buttons"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="Modrinth" type="Button" parent="Buttons/VBox" node_paths=PackedStringArray("tap_parent")]
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("8_ff61e")
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = ExtResource("27_7ljmp")
+theme_override_styles/hover = ExtResource("27_7ljmp")
+theme_override_styles/pressed = ExtResource("27_7ljmp")
+theme_override_styles/disabled = ExtResource("27_7ljmp")
+theme_override_styles/focus = ExtResource("27_7ljmp")
+action_mode = 0
+text = "Modrinth"
+alignment = 0
+script = ExtResource("7_ci0d6")
+tap_parent = NodePath("Rounding")
+metadata/_edit_group_ = true
+
+[node name="Rounding" type="Panel" parent="Buttons/VBox/Modrinth"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ecxcf")
+
+[node name="Icon" type="TextureRect" parent="Buttons/VBox/Modrinth"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 25.0
+offset_top = 0.5
+offset_right = 25.0
+offset_bottom = 0.5
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("28_hf66u")
+expand_mode = 1
+stretch_mode = 3
+
+[node name="HSeparator1" type="HSeparator" parent="Buttons/VBox"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 0
+theme_override_styles/separator = SubResource("StyleBoxLine_ohwc4")
+
+[node name="Mods" type="Button" parent="Buttons/VBox"]
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("8_ff61e")
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = ExtResource("27_7ljmp")
+theme_override_styles/hover = ExtResource("27_7ljmp")
+theme_override_styles/pressed = ExtResource("27_7ljmp")
+theme_override_styles/disabled = ExtResource("27_7ljmp")
+theme_override_styles/focus = ExtResource("27_7ljmp")
+action_mode = 0
+text = "Mods"
+alignment = 0
+script = ExtResource("7_ci0d6")
+metadata/_edit_group_ = true
+
+[node name="Icon" type="TextureRect" parent="Buttons/VBox/Mods"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 25.0
+offset_top = 1.0
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("29_03sf1")
+expand_mode = 1
+stretch_mode = 3
+
+[node name="HSeparator2" type="HSeparator" parent="Buttons/VBox"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 0
+theme_override_styles/separator = SubResource("StyleBoxLine_ohwc4")
+
+[node name="Options" type="Button" parent="Buttons/VBox" node_paths=PackedStringArray("tap_parent")]
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("8_ff61e")
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = ExtResource("27_7ljmp")
+theme_override_styles/hover = ExtResource("27_7ljmp")
+theme_override_styles/pressed = ExtResource("27_7ljmp")
+theme_override_styles/disabled = ExtResource("27_7ljmp")
+theme_override_styles/focus = ExtResource("27_7ljmp")
+action_mode = 0
+text = "Options"
+alignment = 0
+script = ExtResource("7_ci0d6")
+tap_parent = NodePath("Rounding")
+metadata/_edit_group_ = true
+
+[node name="Icon" type="TextureRect" parent="Buttons/VBox/Options"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 25.0
+offset_top = 1.0
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("30_etuoi")
+expand_mode = 1
+stretch_mode = 3
+
+[node name="Rounding" type="Panel" parent="Buttons/VBox/Options"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_uglel")
+
+[connection signal="text_submitted" from="Windows/Modrinth/Panel/Content/Header/Search" to="Windows/Modrinth/Panel/Content/Header/Search" method="_search_for"]
+[connection signal="pressed" from="Windows/Mods/Margin/Aspect/Panel/Margin/Content/Header/Refresh" to="Windows/Mods/Margin/Aspect/Panel/Margin/Content/Header/Refresh" method="populate_mod_table"]
+[connection signal="text_submitted" from="Windows/Options/Margin/Aspect/Panel/Margin/Content/Content/Options/Path/LineEdit" to="Windows/Options/Margin/Aspect/Panel/Margin/Content/Content/Options/Path" method="_text_submitted"]
+[connection signal="text_submitted" from="Windows/Options/Margin/Aspect/Panel/Margin/Content/Content/Options/Path/LineEdit" to="Windows/Options/Margin/Aspect/Panel/Margin/Content/Content/Options/Path/LineEdit" method="release_focus" unbinds=1]
+[connection signal="pressed" from="Windows/Options/Margin/Aspect/Panel/Margin/Content/Content/Options/Path/Edit" to="Windows/Options/Margin/Aspect/Panel/Margin/Content/Content/Options/Path/FileDialog" method="popup"]
+[connection signal="dir_selected" from="Windows/Options/Margin/Aspect/Panel/Margin/Content/Content/Options/Path/FileDialog" to="Windows/Options/Margin/Aspect/Panel/Margin/Content/Content/Options/Path/LineEdit" method="set_text"]
+[connection signal="pressed" from="Buttons/VBox/Modrinth" to="Windows/Modrinth/Panel/Content/Header/Search" method="_search_for" flags=6]
+[connection signal="pressed" from="Buttons/VBox/Modrinth" to="Windows" method="show_window" binds= ["Modrinth"]]
+[connection signal="pressed" from="Buttons/VBox/Mods" to="Windows/Mods/Margin/Aspect/Panel/Margin/Content/Header/Refresh" method="populate_mod_table" flags=6]
+[connection signal="pressed" from="Buttons/VBox/Mods" to="Windows" method="show_window" binds= ["Mods"]]
+[connection signal="pressed" from="Buttons/VBox/Options" to="Windows" method="show_window" binds= ["Options"]]

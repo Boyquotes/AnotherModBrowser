@@ -1,0 +1,10 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://bycol153trg8k"]
+
+[ext_resource type="FontVariation" uid="uid://dml0f08s6pdh" path="res://fonts/Maven_Pro/variation_mod_text_minor.tres" id="1_x28j3"]
+
+[resource]
+line_spacing = 0.0
+font = ExtResource("1_x28j3")
+font_size = 14
+font_color = Color(0.784314, 0.784314, 0.784314, 1)
+shadow_color = Color(0, 0, 0, 0.137255)

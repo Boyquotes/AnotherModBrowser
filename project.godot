@@ -1,0 +1,61 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="AnotherModBrowser"
+run/main_scene="res://app.tscn"
+config/features=PackedStringArray("4.1", "GL Compatibility")
+run/low_processor_mode_sleep_usec=10000
+boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/show_image=false
+boot_splash/fullsize=false
+boot_splash/use_filter=false
+
+[autoload]
+
+Config="*res://config.gd"
+
+[debug]
+
+gdscript/warnings/unassigned_variable=0
+gdscript/warnings/narrowing_conversion=0
+
+[display]
+
+window/size/viewport_width=1600
+window/size/viewport_height=900
+window/energy_saving/keep_screen_on=false
+window/subwindows/embed_subwindows=false
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/unused_md5_file_cleaner/plugin.cfg", "res://addons/godotsize/plugin.cfg", "res://addons/editor_only/hide_renderer/plugin.cfg")
+
+[filesystem]
+
+import/blender/enabled=false
+
+[gui]
+
+theme/custom="res://styles/theme.tres"
+theme/custom_font="res://fonts/Maven_Pro/MavenPro.ttf"
+theme/default_font_antialiasing=0
+
+[physics]
+
+common/physics_ticks_per_second=30
+common/physics_jitter_fix=0.0
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0.0901961, 0.0745098, 0.121569, 1)

@@ -1,0 +1,14 @@
+[gd_resource type="LabelSettings" load_steps=3 format=3 uid="uid://dxd1xwo5x5yel"]
+
+[ext_resource type="FontFile" uid="uid://b5giqp34u5y46" path="res://fonts/Maven_Pro/MavenPro.ttf" id="1_0focy"]
+
+[sub_resource type="FontVariation" id="FontVariation_12pyu"]
+base_font = ExtResource("1_0focy")
+variation_opentype = {
+2003265652: 450
+}
+
+[resource]
+line_spacing = 0.0
+font = SubResource("FontVariation_12pyu")
+shadow_color = Color(0, 0, 0, 0.270588)
