@@ -1,0 +1,9 @@
+[gd_resource type="FontVariation" load_steps=2 format=3 uid="uid://bi7853aa5abvd"]
+
+[ext_resource type="FontFile" uid="uid://b5giqp34u5y46" path="res://fonts/Maven_Pro/MavenPro.ttf" id="1_8jfau"]
+
+[resource]
+base_font = ExtResource("1_8jfau")
+variation_opentype = {
+2003265652: 450
+}

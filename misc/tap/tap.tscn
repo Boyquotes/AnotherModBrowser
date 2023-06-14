@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://bdmyia1qp5pid"]
+
+[ext_resource type="Texture2D" uid="uid://dgi25x1hqumt0" path="res://misc/tap/tap.png" id="1_slnqe"]
+
+[node name="Tap" type="TextureRect"]
+modulate = Color(0.8, 0.596078, 1, 0.705882)
+offset_right = 256.0
+offset_bottom = 256.0
+scale = Vector2(1e-05, 1e-05)
+pivot_offset = Vector2(128, 128)
+mouse_filter = 2
+texture = ExtResource("1_slnqe")

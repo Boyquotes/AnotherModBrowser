@@ -1,0 +1,50 @@
+[gd_scene load_steps=3 format=3 uid="uid://bqtcvn5om2cmt"]
+
+[ext_resource type="Texture2D" uid="uid://c8vw705j8ype3" path="res://icons/trash-x-filled.svg" id="1_ojw8b"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_52fis"]
+line_spacing = 0.0
+font_size = 18
+
+[node name="ModRow" type="HBoxContainer"]
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="Delete" type="TextureButton" parent="."]
+custom_minimum_size = Vector2(18, 22)
+layout_mode = 2
+size_flags_vertical = 0
+focus_mode = 0
+texture_normal = ExtResource("1_ojw8b")
+stretch_mode = 3
+
+[node name="State" type="CheckBox" parent="."]
+custom_minimum_size = Vector2(16, 24)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+focus_mode = 0
+action_mode = 0
+
+[node name="Name" type="Label" parent="."]
+custom_minimum_size = Vector2(200, 24)
+layout_mode = 2
+size_flags_vertical = 0
+text = "Name"
+label_settings = SubResource("LabelSettings_52fis")
+
+[node name="Description" type="Label" parent="."]
+custom_minimum_size = Vector2(400, 24)
+layout_mode = 2
+size_flags_vertical = 0
+text = "Description"
+label_settings = SubResource("LabelSettings_52fis")
+autowrap_mode = 3
+
+[node name="Filename" type="Label" parent="."]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+size_flags_vertical = 0
+text = "Filename"
+label_settings = SubResource("LabelSettings_52fis")

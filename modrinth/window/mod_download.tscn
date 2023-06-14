@@ -1,0 +1,98 @@
+[gd_scene load_steps=12 format=3 uid="uid://bx6p31jhr1tmi"]
+
+[ext_resource type="StyleBox" uid="uid://nr37tp42ubbb" path="res://styles/mod_download_button.tres" id="2_riv5f"]
+[ext_resource type="Script" path="res://modrinth/window/mod_download.gd" id="2_ubags"]
+[ext_resource type="Script" path="res://misc/tap/tap.gd" id="3_3swwd"]
+[ext_resource type="StyleBox" uid="uid://bl0yojntwblvi" path="res://styles/mod_download_button_hover.tres" id="3_62s3a"]
+[ext_resource type="StyleBox" uid="uid://ygq1d50brlf8" path="res://styles/mod_download_button_pressed.tres" id="3_vuk7d"]
+[ext_resource type="FontVariation" uid="uid://yy5c06leoy1d" path="res://fonts/Maven_Pro/variation_download_version.tres" id="4_crhov"]
+[ext_resource type="FontVariation" uid="uid://c7jyw30hwqqjg" path="res://fonts/Maven_Pro/variation_download_loader.tres" id="4_vu0yq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1kdeu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rvdya"]
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="LabelSettings" id="LabelSettings_jdd2x"]
+line_spacing = 0.0
+font = ExtResource("4_crhov")
+font_size = 18
+
+[sub_resource type="LabelSettings" id="LabelSettings_x881c"]
+line_spacing = 1.0
+font = ExtResource("4_vu0yq")
+font_size = 14
+
+[node name="HBox" type="HBoxContainer" node_paths=PackedStringArray("Version", "Loader", "Download")]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 48.0
+grow_horizontal = 2
+theme_override_constants/separation = 10
+script = ExtResource("2_ubags")
+Version = NodePath("VBox/Version")
+Loader = NodePath("VBox/Loader")
+Download = NodePath("Download")
+
+[node name="Download" type="Button" parent="." node_paths=PackedStringArray("tap_parent")]
+custom_minimum_size = Vector2(36, 36)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+focus_mode = 0
+theme_override_styles/normal = ExtResource("2_riv5f")
+theme_override_styles/hover = ExtResource("3_62s3a")
+theme_override_styles/pressed = ExtResource("3_vuk7d")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_1kdeu")
+script = ExtResource("3_3swwd")
+tap_parent = NodePath("Rounding")
+scale_mult = 1.25
+speed_mult = 0.8
+metadata/_edit_group_ = true
+
+[node name="Rounding" type="Panel" parent="Download"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_rvdya")
+
+[node name="Icon" type="TextureRect" parent="Download/Rounding"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 3
+
+[node name="VBox" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/separation = -3
+metadata/_edit_lock_ = true
+
+[node name="Version" type="Label" parent="VBox"]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Version"
+label_settings = SubResource("LabelSettings_jdd2x")
+
+[node name="Loader" type="Label" parent="VBox"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Loader"
+label_settings = SubResource("LabelSettings_x881c")

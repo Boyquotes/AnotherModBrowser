@@ -1,0 +1,483 @@
+[gd_scene load_steps=31 format=3 uid="uid://bgdisbg8hkspn"]
+
+[ext_resource type="Script" path="res://modrinth/window/mod_window.gd" id="1_l0b3t"]
+[ext_resource type="Texture2D" uid="uid://bgr6secweh2du" path="res://fox.png" id="2_vapyx"]
+[ext_resource type="LabelSettings" uid="uid://d2hsvs7x15yfh" path="res://styles/labelsettings_mod_window_title.tres" id="3_4pkbi"]
+[ext_resource type="StyleBox" uid="uid://w1bw0hl81w34" path="res://styles/mod_window_panel.tres" id="4_71ipu"]
+[ext_resource type="LabelSettings" uid="uid://dxd1xwo5x5yel" path="res://styles/labelsettings_mod_window_description.tres" id="5_1l3ic"]
+[ext_resource type="FontVariation" uid="uid://cprbn1uvxmvtx" path="res://fonts/Maven_Pro/variation_richtextlabel_bold.tres" id="6_qcb46"]
+[ext_resource type="Script" path="res://modrinth/window/categories.gd" id="7_hvm0b"]
+[ext_resource type="Script" path="res://modrinth/window/browser.gd" id="7_i60f1"]
+[ext_resource type="PackedScene" uid="uid://bx6p31jhr1tmi" path="res://modrinth/window/mod_download.tscn" id="7_io3kg"]
+[ext_resource type="Script" path="res://modrinth/window/body_formatter.gd" id="7_ujrmy"]
+[ext_resource type="Script" path="res://modrinth/window/mod_window_versions.gd" id="8_cg6k6"]
+[ext_resource type="Script" path="res://misc/tap/tap.gd" id="8_evcdh"]
+[ext_resource type="Script" path="res://classes/project_versions_component.gd" id="9_8tkek"]
+[ext_resource type="Script" path="res://classes/fake_progress.gd" id="10_4752n"]
+[ext_resource type="Script" path="res://modrinth/window/mod_download.gd" id="15_ctjp3"]
+[ext_resource type="StyleBox" uid="uid://nr37tp42ubbb" path="res://styles/mod_download_button.tres" id="16_xmeei"]
+[ext_resource type="StyleBox" uid="uid://bl0yojntwblvi" path="res://styles/mod_download_button_hover.tres" id="17_q3req"]
+[ext_resource type="StyleBox" uid="uid://ygq1d50brlf8" path="res://styles/mod_download_button_pressed.tres" id="18_ad7d6"]
+[ext_resource type="FontVariation" uid="uid://yy5c06leoy1d" path="res://fonts/Maven_Pro/variation_download_version.tres" id="19_r5v5k"]
+[ext_resource type="FontVariation" uid="uid://c7jyw30hwqqjg" path="res://fonts/Maven_Pro/variation_download_loader.tres" id="20_qb8lu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7l81s"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.466667, 0, 0.819608, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_color = Color(0, 0, 0, 0.243137)
+shadow_size = 8
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x8m4k"]
+draw_center = false
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0, 0, 0, 0.168627)
+shadow_size = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0qkic"]
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yt0yu"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.105882, 0.0117647, 0.211765, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_color = Color(0, 0, 0, 0.243137)
+shadow_size = 8
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_3pusg"]
+line_spacing = 0.0
+font_size = 12
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_facln"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1kdeu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rvdya"]
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="LabelSettings" id="LabelSettings_jdd2x"]
+line_spacing = 0.0
+font = ExtResource("19_r5v5k")
+font_size = 18
+
+[sub_resource type="LabelSettings" id="LabelSettings_x881c"]
+line_spacing = 1.0
+font = ExtResource("20_qb8lu")
+font_size = 14
+
+[node name="mod_popup" type="Window" node_paths=PackedStringArray("InfoPanel", "Versions", "Icon", "Title", "Description", "Author", "LatestVersion", "Downloads", "Body")]
+disable_3d = true
+positional_shadow_atlas_size = 0
+positional_shadow_atlas_quad_0 = 0
+positional_shadow_atlas_quad_1 = 0
+positional_shadow_atlas_quad_2 = 0
+positional_shadow_atlas_quad_3 = 0
+initial_position = 3
+size = Vector2i(750, 500)
+current_screen = 0
+min_size = Vector2i(500, 300)
+script = ExtResource("1_l0b3t")
+InfoPanel = NodePath("HSplit/Side/VBox/Mod")
+Versions = NodePath("HSplit/Main/Content/Versions/VBox/List")
+Icon = NodePath("HSplit/Side/VBox/Mod/IconContainer/Shadow/Rounding/Icon")
+Title = NodePath("HSplit/Side/VBox/Mod/IconContainer/title")
+Description = NodePath("HSplit/Side/VBox/Meta/Meta/ScrollContainer/description")
+Author = NodePath("HSplit/Side/VBox/Meta/Meta/author")
+LatestVersion = NodePath("HSplit/Side/VBox/Meta/Meta/latest_version")
+Downloads = NodePath("HSplit/Side/VBox/Meta/Meta/downloads")
+Body = NodePath("HSplit/Main/Content/Description/Body")
+
+[node name="HSplit" type="HSplitContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+split_offset = 220
+
+[node name="Side" type="ScrollContainer" parent="HSplit"]
+clip_contents = false
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+
+[node name="VBox" type="VBoxContainer" parent="HSplit/Side"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_constants/separation = 10
+
+[node name="Mod" type="PanelContainer" parent="HSplit/Side/VBox"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_7l81s")
+
+[node name="IconContainer" type="HBoxContainer" parent="HSplit/Side/VBox/Mod"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="title" type="Label" parent="HSplit/Side/VBox/Mod/IconContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Mod Title"
+label_settings = ExtResource("3_4pkbi")
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Shadow" type="Panel" parent="HSplit/Side/VBox/Mod/IconContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_styles/panel = SubResource("StyleBoxFlat_x8m4k")
+
+[node name="Rounding" type="Panel" parent="HSplit/Side/VBox/Mod/IconContainer/Shadow"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_0qkic")
+
+[node name="Icon" type="TextureRect" parent="HSplit/Side/VBox/Mod/IconContainer/Shadow/Rounding"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+texture = ExtResource("2_vapyx")
+expand_mode = 1
+
+[node name="Meta" type="PanelContainer" parent="HSplit/Side/VBox"]
+layout_mode = 2
+theme_override_styles/panel = ExtResource("4_71ipu")
+
+[node name="Meta" type="VBoxContainer" parent="HSplit/Side/VBox/Meta"]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HSplit/Side/VBox/Meta/Meta"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="description" type="Label" parent="HSplit/Side/VBox/Meta/Meta/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "description
+woah"
+label_settings = ExtResource("5_1l3ic")
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="HSplit/Side/VBox/Meta/Meta"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+
+[node name="author" type="Label" parent="HSplit/Side/VBox/Meta/Meta"]
+layout_mode = 2
+text = "author"
+label_settings = ExtResource("5_1l3ic")
+autowrap_mode = 2
+
+[node name="downloads" type="RichTextLabel" parent="HSplit/Side/VBox/Meta/Meta"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_fonts/bold_font = ExtResource("6_qcb46")
+bbcode_enabled = true
+text = "[b]69[/b] downloads"
+fit_content = true
+scroll_active = false
+autowrap_mode = 2
+shortcut_keys_enabled = false
+meta_underlined = false
+hint_underlined = false
+
+[node name="latest_version" type="Label" parent="HSplit/Side/VBox/Meta/Meta"]
+visible = false
+layout_mode = 2
+text = "latest_version"
+label_settings = ExtResource("5_1l3ic")
+autowrap_mode = 2
+
+[node name="Navigation" type="PanelContainer" parent="HSplit/Side/VBox"]
+layout_mode = 2
+theme_override_styles/panel = ExtResource("4_71ipu")
+
+[node name="Categories" type="VBoxContainer" parent="HSplit/Side/VBox/Navigation"]
+layout_mode = 2
+script = ExtResource("7_hvm0b")
+
+[node name="Description" type="Button" parent="HSplit/Side/VBox/Navigation/Categories"]
+layout_mode = 2
+action_mode = 0
+text = "Description"
+flat = true
+alignment = 0
+
+[node name="Versions" type="Button" parent="HSplit/Side/VBox/Navigation/Categories"]
+layout_mode = 2
+action_mode = 0
+text = "Versions"
+flat = true
+alignment = 0
+
+[node name="Main" type="ScrollContainer" parent="HSplit"]
+clip_contents = false
+custom_minimum_size = Vector2(0, 250)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Content" type="VBoxContainer" parent="HSplit/Main"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="Notice" type="PanelContainer" parent="HSplit/Main/Content"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_yt0yu")
+
+[node name="HFlow" type="HFlowContainer" parent="HSplit/Main/Content/Notice"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HSplit/Main/Content/Notice/HFlow"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+text = "Content display below is experimental:
+Text may be incorrectly formatted and images won't load yet."
+label_settings = SubResource("LabelSettings_3pusg")
+autowrap_mode = 3
+
+[node name="Browser" type="Button" parent="HSplit/Main/Content/Notice/HFlow"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 14
+text = "View in Browser"
+script = ExtResource("7_i60f1")
+
+[node name="Dismiss" type="Button" parent="HSplit/Main/Content/Notice/HFlow"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 14
+text = "Dismiss"
+script = ExtResource("8_evcdh")
+
+[node name="Description" type="PanelContainer" parent="HSplit/Main/Content"]
+layout_mode = 2
+theme_override_styles/panel = ExtResource("4_71ipu")
+
+[node name="Body" type="RichTextLabel" parent="HSplit/Main/Content/Description"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+focus_mode = 2
+theme_override_colors/selection_color = Color(0.435294, 0.576471, 1, 0.45098)
+theme_override_fonts/bold_font = ExtResource("6_qcb46")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_facln")
+bbcode_enabled = true
+text = "body"
+fit_content = true
+scroll_active = false
+context_menu_enabled = true
+threaded = true
+progress_bar_delay = 200
+selection_enabled = true
+script = ExtResource("7_ujrmy")
+
+[node name="Versions" type="PanelContainer" parent="HSplit/Main/Content"]
+layout_mode = 2
+theme_override_styles/panel = ExtResource("4_71ipu")
+
+[node name="ModrinthProjectVersions" type="HTTPRequest" parent="HSplit/Main/Content/Versions"]
+timeout = 20.0
+script = ExtResource("9_8tkek")
+
+[node name="FakeProgressBar" type="ProgressBar" parent="HSplit/Main/Content/Versions" node_paths=PackedStringArray("HTTP")]
+layout_mode = 2
+max_value = 1.0
+step = 0.0
+show_percentage = false
+script = ExtResource("10_4752n")
+HTTP = NodePath("../ModrinthProjectVersions")
+free_after_success = true
+
+[node name="VBox" type="VBoxContainer" parent="HSplit/Main/Content/Versions"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Filters" type="HBoxContainer" parent="HSplit/Main/Content/Versions/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Loader" type="OptionButton" parent="HSplit/Main/Content/Versions/VBox/Filters"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"MenuButtonGrey"
+item_count = 4
+selected = 0
+fit_to_longest_item = false
+allow_reselect = true
+popup/item_0/text = "Loader"
+popup/item_0/id = 0
+popup/item_0/separator = true
+popup/item_1/text = "Quilt"
+popup/item_1/id = 1
+popup/item_2/text = "Fabric"
+popup/item_2/id = 2
+popup/item_3/text = "Forge"
+popup/item_3/id = 3
+
+[node name="Version" type="OptionButton" parent="HSplit/Main/Content/Versions/VBox/Filters"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"MenuButtonGrey"
+item_count = 2
+selected = 0
+fit_to_longest_item = false
+allow_reselect = true
+popup/item_0/text = "Version"
+popup/item_0/id = 0
+popup/item_0/separator = true
+popup/item_1/text = "Any"
+popup/item_1/id = 1
+
+[node name="Channel" type="OptionButton" parent="HSplit/Main/Content/Versions/VBox/Filters"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"MenuButtonGrey"
+item_count = 4
+selected = 0
+fit_to_longest_item = false
+allow_reselect = true
+popup/item_0/text = "Type"
+popup/item_0/id = 0
+popup/item_0/separator = true
+popup/item_1/text = "Release"
+popup/item_1/id = 1
+popup/item_2/text = "Beta"
+popup/item_2/id = 2
+popup/item_3/text = "Alpha"
+popup/item_3/id = 3
+
+[node name="Clear" type="Button" parent="HSplit/Main/Content/Versions/VBox/Filters"]
+layout_mode = 2
+theme_type_variation = &"TapButtonRed"
+text = "Clear"
+script = ExtResource("8_evcdh")
+
+[node name="List" type="VBoxContainer" parent="HSplit/Main/Content/Versions/VBox" node_paths=PackedStringArray("HTTP")]
+layout_mode = 2
+script = ExtResource("8_cg6k6")
+HTTP = NodePath("../../ModrinthProjectVersions")
+ModDownloadScene = ExtResource("7_io3kg")
+
+[node name="Dummy" type="HBoxContainer" parent="HSplit/Main/Content/Versions/VBox/List"]
+layout_mode = 2
+theme_override_constants/separation = 10
+script = ExtResource("15_ctjp3")
+
+[node name="Download" type="Button" parent="HSplit/Main/Content/Versions/VBox/List/Dummy" node_paths=PackedStringArray("tap_parent")]
+custom_minimum_size = Vector2(36, 36)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+focus_mode = 0
+theme_override_styles/normal = ExtResource("16_xmeei")
+theme_override_styles/hover = ExtResource("17_q3req")
+theme_override_styles/pressed = ExtResource("18_ad7d6")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_1kdeu")
+script = ExtResource("8_evcdh")
+tap_parent = NodePath("Rounding")
+scale_mult = 1.25
+speed_mult = 0.8
+metadata/_edit_group_ = true
+
+[node name="Rounding" type="Panel" parent="HSplit/Main/Content/Versions/VBox/List/Dummy/Download"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_rvdya")
+
+[node name="Icon" type="TextureRect" parent="HSplit/Main/Content/Versions/VBox/List/Dummy/Download/Rounding"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 3
+
+[node name="VBox" type="VBoxContainer" parent="HSplit/Main/Content/Versions/VBox/List/Dummy"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/separation = -3
+metadata/_edit_lock_ = true
+
+[node name="Version" type="Label" parent="HSplit/Main/Content/Versions/VBox/List/Dummy/VBox"]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Version"
+label_settings = SubResource("LabelSettings_jdd2x")
+
+[node name="Loader" type="Label" parent="HSplit/Main/Content/Versions/VBox/List/Dummy/VBox"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Loader"
+label_settings = SubResource("LabelSettings_x881c")
+
+[connection signal="close_requested" from="." to="." method="queue_free" flags=6]
+[connection signal="pressed" from="HSplit/Side/VBox/Navigation/Categories/Description" to="HSplit/Side/VBox/Navigation/Categories" method="scroll_to" binds= ["Description"]]
+[connection signal="pressed" from="HSplit/Side/VBox/Navigation/Categories/Versions" to="HSplit/Side/VBox/Navigation/Categories" method="scroll_to" binds= ["Versions"]]
+[connection signal="pressed" from="HSplit/Main/Content/Notice/HFlow/Dismiss" to="HSplit/Main/Content/Notice" method="queue_free"]
+[connection signal="meta_clicked" from="HSplit/Main/Content/Description/Body" to="HSplit/Main/Content/Description/Body" method="_on_meta_clicked"]
+[connection signal="pressed" from="HSplit/Main/Content/Versions/VBox/Filters/Clear" to="HSplit/Main/Content/Versions/VBox/Filters/Loader" method="select" binds= [0]]
+[connection signal="pressed" from="HSplit/Main/Content/Versions/VBox/Filters/Clear" to="HSplit/Main/Content/Versions/VBox/Filters/Version" method="select" binds= [0]]
+[connection signal="pressed" from="HSplit/Main/Content/Versions/VBox/Filters/Clear" to="HSplit/Main/Content/Versions/VBox/Filters/Channel" method="select" binds= [0]]

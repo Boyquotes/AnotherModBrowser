@@ -1,0 +1,6 @@
+[gd_resource type="Resource" script_class="Mod" load_steps=2 format=3 uid="uid://d1q2tmkoeq321"]
+
+[ext_resource type="Script" path="res://classes/mods/mod.gd" id="1_mjnvr"]
+
+[resource]
+script = ExtResource("1_mjnvr")

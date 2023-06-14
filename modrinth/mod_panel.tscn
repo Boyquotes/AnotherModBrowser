@@ -1,0 +1,210 @@
+[gd_scene load_steps=18 format=3 uid="uid://dhdnplgbhmya8"]
+
+[ext_resource type="StyleBox" uid="uid://d2j28br6071hj" path="res://fonts/Maven_Pro/variation_mod.tres" id="1_kc1i8"]
+[ext_resource type="Script" path="res://modrinth/mod_panel.gd" id="2_rktkj"]
+[ext_resource type="Script" path="res://classes/project_info_component.gd" id="3_euq2f"]
+[ext_resource type="Texture2D" uid="uid://bgr6secweh2du" path="res://fox.png" id="3_tcn18"]
+[ext_resource type="Script" path="res://classes/fake_progress.gd" id="3_u4mm2"]
+[ext_resource type="FontFile" uid="uid://b5giqp34u5y46" path="res://fonts/Maven_Pro/MavenPro.ttf" id="4_mmx3a"]
+[ext_resource type="FontVariation" uid="uid://cpny1p07mqog8" path="res://fonts/Maven_Pro/variation_title.tres" id="5_ikrue"]
+[ext_resource type="LabelSettings" uid="uid://8d37e8qh5eyo" path="res://styles/labelsettings_mod_title.tres" id="6_4yes2"]
+[ext_resource type="LabelSettings" uid="uid://ceam2l5vo8n6u" path="res://styles/labelsettings_mod_short_description.tres" id="7_xj6wk"]
+[ext_resource type="LabelSettings" uid="uid://bycol153trg8k" path="res://styles/labelsettings_mod_text_minor.tres" id="8_s8ojq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w2kng"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+anti_aliasing_size = 0.8
+
+[sub_resource type="Gradient" id="Gradient_ksp1j"]
+colors = PackedColorArray(0.965759, 1, 0.800781, 1, 1, 0.856201, 0.515625, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8q125"]
+gradient = SubResource("Gradient_ksp1j")
+width = 256
+height = 256
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_66y6f"]
+bg_color = Color(0.784314, 0.784314, 0.784314, 1)
+corner_radius_bottom_right = 10
+corner_detail = 4
+shadow_color = Color(0, 0, 0, 0.14902)
+shadow_size = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hikde"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+anti_aliasing_size = 0.8
+
+[sub_resource type="FontVariation" id="FontVariation_vmsf0"]
+base_font = ExtResource("4_mmx3a")
+variation_opentype = {
+2003265652: 500
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_a58er"]
+line_spacing = 0.0
+font = SubResource("FontVariation_vmsf0")
+font_size = 12
+
+[node name="search_mod" type="Panel" node_paths=PackedStringArray("HTTP", "progress", "Title", "Description", "Icon", "Background", "NoImage", "Author", "Version")]
+custom_minimum_size = Vector2(400, 150)
+offset_right = 250.0
+offset_bottom = 150.0
+theme_override_styles/panel = ExtResource("1_kc1i8")
+script = ExtResource("2_rktkj")
+HTTP = NodePath("ModrinthProjectInfoComponent")
+progress = NodePath("BackgroundRounding/FakeProgressBar")
+Title = NodePath("Title")
+Description = NodePath("Scroll/Description")
+Icon = NodePath("IconRounding/Icon")
+Background = NodePath("BackgroundRounding/Background")
+NoImage = NodePath("NoImage")
+Author = NodePath("Footer/Author")
+Version = NodePath("Footer/Version")
+
+[node name="ModrinthProjectInfoComponent" type="HTTPRequest" parent="."]
+script = ExtResource("3_euq2f")
+
+[node name="BackgroundRounding" type="Panel" parent="."]
+clip_children = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -8.0
+offset_top = -2.0
+offset_right = 8.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_w2kng")
+
+[node name="Background" type="TextureRect" parent="BackgroundRounding"]
+modulate = Color(0.513726, 0.513726, 0.513726, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_8q125")
+expand_mode = 2
+
+[node name="FakeProgressBar" type="ProgressBar" parent="BackgroundRounding" node_paths=PackedStringArray("HTTP")]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -6.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/fill = SubResource("StyleBoxFlat_66y6f")
+max_value = 1.0
+step = 0.0
+show_percentage = false
+script = ExtResource("3_u4mm2")
+HTTP = NodePath("../../ModrinthProjectInfoComponent")
+
+[node name="IconRounding" type="Panel" parent="."]
+clip_children = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -64.0
+offset_top = 6.0
+offset_bottom = 70.0
+grow_horizontal = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_hikde")
+
+[node name="Icon" type="TextureRect" parent="IconRounding"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_tcn18")
+expand_mode = 1
+
+[node name="NoImage" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -64.0
+offset_top = 6.0
+offset_bottom = 21.0
+grow_horizontal = 0
+text = "No Image"
+label_settings = SubResource("LabelSettings_a58er")
+horizontal_alignment = 1
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_right = -70.0
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("5_ikrue")
+text = "Fox"
+label_settings = ExtResource("6_4yes2")
+text_overrun_behavior = 3
+
+[node name="Scroll" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 36.0
+offset_right = -70.0
+offset_bottom = -22.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Description" type="Label" parent="Scroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+text = "Look! It's a pretty cute fox.
+
+
+(If you see this, something went wrong.)"
+label_settings = ExtResource("7_xj6wk")
+autowrap_mode = 2
+
+[node name="Footer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -20.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="Version" type="Label" parent="Footer"]
+layout_mode = 2
+text = "Versions"
+label_settings = ExtResource("8_s8ojq")
+
+[node name="Author" type="Label" parent="Footer"]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "Author"
+label_settings = ExtResource("8_s8ojq")
